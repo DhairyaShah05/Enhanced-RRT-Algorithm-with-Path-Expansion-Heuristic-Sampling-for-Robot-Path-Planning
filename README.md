@@ -1,4 +1,4 @@
-Here's the combined README for the project, integrating both provided sections:
+Here's the updated README that includes the information from all three sections:
 
 ---
 
@@ -11,6 +11,10 @@ Here's the combined README for the project, integrating both provided sections:
 - `ep_rrt_star_cluster.py`: Implements the EP-RRT algorithm for a clustered map with square obstacles.
 - `ep_rrt_star_general.py`: Implements the EP-RRT algorithm for a general map with different geometric shapes as obstacles.
 - `ep_rrt_star_maze_map.py`: Implements the EP-RRT algorithm for a maze-like environment with rectangular and square obstacles.
+- `rrt_cluster.py`: Implements the RRT* algorithm in a clustered environment with random square obstacles.
+- `rrt_general.py`: Implements the RRT* algorithm in a general environment with predefined obstacle shapes like rectangles, hexagons, and walls.
+- `rrt_maze.py`: Implements the RRT* algorithm in a maze-like environment with complex obstacles.
+- `rrt_narrow.py`: Implements the RRT* algorithm in a narrow passage environment with tight spaces and corridors.
 
 ### Maps Folder
 
@@ -82,6 +86,46 @@ python ep_rrt_star_maze_map.py
 **Example Output:**
 - A visual plot of the explored nodes and the optimal path found.
 
+### Additional RRT* Scripts
+
+Each script implements the RRT* algorithm in a specific environment:
+
+#### `rrt_cluster.py`
+
+Creates a random map with clustered square obstacles and attempts to find a path from a start position to a goal position.
+
+**Usage:**
+```bash
+python rrt_cluster.py
+```
+
+#### `rrt_general.py`
+
+Generates an obstacle map with predefined shapes like rectangles, hexagons, and walls, then finds a path from a start position to a goal position.
+
+**Usage:**
+```bash
+python rrt_general.py
+```
+
+#### `rrt_maze.py`
+
+Creates a complex maze-like obstacle map and finds a path from a start position to a goal position.
+
+**Usage:**
+```bash
+python rrt_maze.py
+```
+
+#### `rrt_narrow.py`
+
+Generates a narrow passage environment with tight spaces and corridors, and attempts to find a path from a start position to a goal position.
+
+**Usage:**
+```bash
+python rrt_narrow.py
+```
+
 ### Maps Folder
 
 To generate and visualize the maps, run the `plt_maps.py` script:
@@ -136,8 +180,35 @@ This will display the maps created by the various functions side by side in a si
   - `backtrack_path`: Backtracks from the goal node to find the path.
   - `rrt_star_informed`: Main function implementing the EP-RRT* algorithm.
 
+### `rrt_cluster.py`
+- **Node Class**: Represents a node in the RRT tree with properties such as position (`point`), parent node (`parent`), and cost to reach the node.
+- **Functions**:
+  - `plot_map`: Generates a map with randomly placed square obstacles.
+  - `check_collision`: Checks if a line segment collides with obstacles.
+  - `nearest`: Finds the nearest node to a given point from the list of nodes.
+  - `steer`: Steers from a given node towards a target point with a specified step size.
+  - `plot_tree`: Visualizes the RRT tree on the map.
+  - `backtrack_path`: Backtracks from the goal node to the start node to find the complete path.
+
+### `rrt_general.py`, `rrt_maze.py`, `rrt_narrow.py`
+- Same structure as `rrt_cluster.py`, but with environment-specific map generation and handling.
+
+## RRT* Algorithm (`rrt_star`)
+
+The `rrt_star` function in these scripts implements the RRT* algorithm with the following steps:
+1. **Initialization**: Creates the initial node (start position).
+2. **Sampling**: Samples random points in the space.
+3. **Nearest Node**: Finds the nearest node to the sampled point.
+4. **Steering**: Creates a new node towards the sampled point.
+5. **Collision Check**: Checks for collision-free paths.
+6. **Adding Nodes**: Adds the new node to the tree if collision-free.
+7. **Goal Check**: Checks if the goal is reached.
+8. **Path Optimization**: Optimizes the path by minimizing the cost.
+
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
+
+ See the [LICENSE](LICENSE) file for details.
 
 ---
