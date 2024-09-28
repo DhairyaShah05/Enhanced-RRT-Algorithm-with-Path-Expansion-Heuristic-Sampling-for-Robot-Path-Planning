@@ -1,11 +1,24 @@
-```markdown
+Here's the combined README for the project, integrating both provided sections:
+
+---
+
 # Enhanced-RRT-Algorithm-with-Path-Expansion-Heuristic-Sampling-for-Robot-Path-Planning
 
 ## Project Structure
 
+### Main Scripts
+
 - `ep_rrt_star_cluster.py`: Implements the EP-RRT algorithm for a clustered map with square obstacles.
 - `ep_rrt_star_general.py`: Implements the EP-RRT algorithm for a general map with different geometric shapes as obstacles.
 - `ep_rrt_star_maze_map.py`: Implements the EP-RRT algorithm for a maze-like environment with rectangular and square obstacles.
+
+### Maps Folder
+
+This folder contains multiple Python scripts designed to generate various map layouts for robotic path planning algorithms. The maps include general spaces, narrow paths, clustered obstacles, and maze-like structures.
+
+- `Maps_file.py`: Includes map generation functions for general, narrow, cluster, and maze-like maps.
+- `maze_map.py`: Focuses on generating a maze-like map with different types of obstacles.
+- `plt_maps.py`: Visualizes the maps created by other scripts using `matplotlib`.
 
 ## Installation
 
@@ -17,7 +30,9 @@ pip install numpy matplotlib
 
 ## Usage
 
-### `ep_rrt_star_cluster.py`
+### Main Scripts
+
+#### `ep_rrt_star_cluster.py`
 
 This script generates a map with clustered square obstacles and attempts to find a path using the EP-RRT* algorithm.
 
@@ -35,7 +50,7 @@ python ep_rrt_star_cluster.py
 **Example Output:**
 - A visual plot of the explored nodes and the optimal path found.
 
-### `ep_rrt_star_general.py`
+#### `ep_rrt_star_general.py`
 
 This script generates a map with various geometric shapes, including rectangles, hexagons, and blocks, and attempts to find a path using the EP-RRT* algorithm.
 
@@ -51,7 +66,7 @@ python ep_rrt_star_general.py
 **Example Output:**
 - A visual plot of the explored nodes and the optimal path found.
 
-### `ep_rrt_star_maze_map.py`
+#### `ep_rrt_star_maze_map.py`
 
 This script generates a maze-like map with rectangular and square obstacles and attempts to find a path using the EP-RRT* algorithm.
 
@@ -66,6 +81,22 @@ python ep_rrt_star_maze_map.py
 
 **Example Output:**
 - A visual plot of the explored nodes and the optimal path found.
+
+### Maps Folder
+
+To generate and visualize the maps, run the `plt_maps.py` script:
+
+```bash
+python plt_maps.py
+```
+
+This will display the maps created by the various functions side by side in a single plot. The generated maps are represented in grayscale, where obstacles are denoted by higher intensity values.
+
+**Map Functions:**
+- `general_map(width, height)`: Creates a general map with predefined wall obstacles and rectangular shapes.
+- `narrow_map(width, height)`: Generates a narrow map filled with multiple rectangular obstacles (fixed dimensions: 900x900).
+- `cluster_map(width, height, num_squares, square_size)`: Constructs a map with random clusters of square obstacles.
+- `maze_map(width, height)`: Creates a maze-like map with predefined obstacles and square obstacles scattered around the grid (fixed dimensions: 6000x3000).
 
 ## File Descriptions
 
@@ -105,20 +136,8 @@ python ep_rrt_star_maze_map.py
   - `backtrack_path`: Backtracks from the goal node to find the path.
   - `rrt_star_informed`: Main function implementing the EP-RRT* algorithm.
 
-## Future Work
-
-The following functionalities will be added in the future:
-- [ ] Adding more complex maps in the `Maps` folder.
-- [ ] Implementing different RRT variants in the `RRT` and `RRT-Connect` folders.
-- [ ] Enhancing the visualization and performance of the algorithms.
-
-## References
-
-- Lavalle, Steven M. "Rapidly-Exploring Random Trees: A New Tool for Path Planning." (1998).
-- Karaman, Sertac, and Emilio Frazzoli. "Sampling-based algorithms for optimal motion planning." The international journal of robotics research 30.7 (2011): 846-894.
-
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-```
+---
